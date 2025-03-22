@@ -2,6 +2,8 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
+const bodyParser = require("body-parser");
+const db = require("./database");
 
 const app = express();
 const server = http.createServer(app);
@@ -10,6 +12,46 @@ const io = socketIo(server, {
     origin: '*',
   }
 });
+app.use(bodyParser.json());
+app.post("/rooms", (req, res) => {
+  const { owner, collaborators } = req.body;
+  db.addRoom(owner, collaborators, (err, roomId) => {
+      if (err) {
+          res.status(500).json({ error: err.message });
+      } else {
+          res.status(201).json({ room_id: roomId });
+      }
+  });
+});
+//route to get room details by id
+app.get("/rooms/:id", (req, res) => {
+  const roomId = req.params.id;
+  db.getRoomById(roomId, (err, room) => {
+      if (err) {
+          res.status(500).json({ error: err.message });
+      } else if (room) {
+          res.json(room);
+      } else {
+          res.status(404).json({ message: "Room not found" });
+      }
+  });
+});
+//route to update collaborators
+app.put("/rooms/:id", (req, res) => {
+  const roomId = req.params.id;
+  const { collaborators } = req.body;
+  db.updateCollaborators(roomId, collaborators, (err, changes) => {
+      if (err) {
+          res.status(500).json({ error: err.message });
+      } else if (changes === 0) {
+          res.status(404).json({ message: "Room not found" });
+      } else {
+          res.json({ message: "Collaborators updated successfully" });
+      }
+  });
+});
+
+
 
 // Store active rooms and their data
 const rooms = new Map();
@@ -117,6 +159,10 @@ io.on('connection', (socket) => {
     });
   });
 });
+
+app.post
+
+
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
