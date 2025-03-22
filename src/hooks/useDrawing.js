@@ -111,11 +111,18 @@ export const useDrawing = ({
   };
 
   const redo = async () => {
-    if(redoStack.length > 0) {
+    if (redoStack.length > 0) {
       const nextState = redoStack[redoStack.length - 1];
-      await drawingServiceRef.current.loadImageData(nextState);
-      setUndoStack(prev => [...prev, nextState]);
-      setRedoStack(prev => prev.slice(0, -1));
+      try {
+        await drawingServiceRef.current.loadImageData(nextState);
+        setUndoStack(prev => [...prev, nextState]);
+        setRedoStack(prev => prev.slice(0, -1));
+        
+        // Call autoSave after successful redo
+        autoSave();
+      } catch (error) {
+        console.error('Redo operation failed:', error);
+      }
     }
   };
 

@@ -439,17 +439,38 @@ newSocket.on('room-data', (data) => {
 
   // Modify the redo function
   const redo = () => {
-    if (redoStack.length > 0 && socket && roomId) {
-      const nextState = redoStack[redoStack.length - 1];
+    if (redoStack.length === 0) return;
+  
+    const nextState = redoStack[redoStack.length - 1];
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+  
+    // Create and load image
+    const img = new Image();
+    img.onload = () => {
+      // Clear canvas first
+      context.fillStyle = darkMode ? '#282c34' : 'white';
+      context.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Emit the redo action to all users in the room
-      socket.emit('canvas-redo', {
-        roomId,
-        nextState,
-        undoStack: [...undoStack, nextState],
-        redoStack: redoStack.slice(0, -1)
-      });
-    }
+      // Draw the next state
+      context.drawImage(img, 0, 0);
+      
+      // Update stacks
+      setUndoStack(prev => [...prev, nextState]);
+      setRedoStack(prev => prev.slice(0, -1));
+  
+      // If in room mode, emit to other users
+      if (socket && roomId) {
+        socket.emit('canvas-redo', {
+          roomId,
+          nextState,
+          undoStack: [...undoStack, nextState],
+          redoStack: redoStack.slice(0, -1)
+        });
+      }
+    };
+  
+    img.src = nextState;
   };
 
   const clearCanvas = () => {
