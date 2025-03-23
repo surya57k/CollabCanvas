@@ -452,3 +452,47 @@
   background: #1e293b;
   border-color: rgba(255, 255, 255, 0.1);
 }
+
+.dark .quick-tools-container {
+  background: #1a1e2e;
+  border-color: #334155;
+}
+
+.dark .quick-tools-section {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .tool-button {
+  background: #2d3446;
+  color: #e0e0e0;
+  border-color: #334155;
+}
+
+.dark .tool-button:hover {
+  background: #3a4154;
+}
+
+.dark .tool-button.active {
+  background: #4834d4;
+  color: #ffffff;
+}
+
+.dark .width-slider,
+.dark .opacity-slider {
+  background: #2d3446;
+}
+
+.dark .width-slider::-webkit-slider-thumb,
+.dark .opacity-slider::-webkit-slider-thumb {
+  background: #4834d4;
+}
+
+.dark .color-button {
+  border-color: #334155;
+}
+
+.dark .custom-color-picker {
+  background: #1e293b;
+  border-color: #334155;
+}

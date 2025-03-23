@@ -1,7 +1,11 @@
 const templates = {
-    template1: '/templates/template1.png',
-    template2: '/templates/template2.png',
-    template3: '/templates/template3.png'
+    blank: '/templates/blank.jpg',
+    kanban: '/templates/kanban-board.png',
+    mindmap: '/templates/mind-map.png',
+    businessModel: '/templates/business-model.jpg',
+    weeklyPlanner: '/templates/weekly-planner.jpg',
+    retrospective: '/templates/retrospective.jpg',
+    userJourney: '/templates/user-journey.png'
 };
 
 const loadImageData = (canvas, dataUrl) => {

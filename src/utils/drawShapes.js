@@ -83,6 +83,56 @@ export const drawShapeOnCanvas = (context, params) => {
       }
       context.closePath();
       break;
+    case 'hexagon':
+      const hexRadius = Math.min(Math.abs(width), Math.abs(height)) / 2;
+      const hexX = x + width / 2;
+      const hexY = y + height / 2;
+      context.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i;
+        const pX = hexX + hexRadius * Math.cos(angle);
+        const pY = hexY + hexRadius * Math.sin(angle);
+        if (i === 0) context.moveTo(pX, pY);
+        else context.lineTo(pX, pY);
+      }
+      context.closePath();
+      break;
+
+    case 'pentagon':
+      const pentRadius = Math.min(Math.abs(width), Math.abs(height)) / 2;
+      const pentX = x + width / 2;
+      const pentY = y + height / 2;
+      context.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
+        const pX = pentX + pentRadius * Math.cos(angle);
+        const pY = pentY + pentRadius * Math.sin(angle);
+        if (i === 0) context.moveTo(pX, pY);
+        else context.lineTo(pX, pY);
+      }
+      context.closePath();
+      break;
+
+    case 'diamond':
+      const centerX = x + width / 2;
+      const centerY = y + height / 2;
+      context.beginPath();
+      context.moveTo(centerX, y);
+      context.lineTo(x + width, centerY);
+      context.lineTo(centerX, y + height);
+      context.lineTo(x, centerY);
+      context.closePath();
+      break;
+
+    case 'oval':
+      const radiusX = width / 2;
+      const radiusY = height / 2;
+      const centerOvalX = x + radiusX;
+      const centerOvalY = y + radiusY;
+      context.beginPath();
+      context.ellipse(centerOvalX, centerOvalY, Math.abs(radiusX), Math.abs(radiusY), 0, 0, Math.PI * 2);
+      context.closePath();
+      break;
   }
 
   // Draw the shape - fill with selected color

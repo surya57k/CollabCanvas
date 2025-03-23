@@ -241,3 +241,36 @@
 .dark .confirm-no:hover {
   background: #505050;
 }
+
+.dark .right-sidebar {
+  background: #1a1e2e;
+  border-color: #334155;
+  color: #e0e0e0;
+}
+
+.dark .sidebar-navigation {
+  border-color: #334155;
+  background: #1e293b;
+}
+
+.dark .nav-tab {
+  color: #e0e0e0;
+}
+
+.dark .nav-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .nav-tab.active {
+  background: #4834d4;
+}
+
+.dark .sidebar-content > * {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark .template-count {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}

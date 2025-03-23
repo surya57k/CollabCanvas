@@ -493,10 +493,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* ...rest of existing styles... */
 
-
-
-
-
 .room-info {
   position: absolute;
   top: 8px;
@@ -510,7 +506,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   gap: 10px;
   z-index: 1000;
 }
-
 
 .dark .room-info {
   background-color: rgba(40, 44, 52, 0.9);
@@ -530,4 +525,44 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .collaborators-icon {
   width: 16px;
   height: 16px;
+}
+
+.dark .whiteboard-container {
+  background: #1a1e2e;
+}
+
+.dark .toolbar {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: #334155;
+}
+
+.dark .tool-button {
+  color: #e0e0e0;
+}
+
+.dark .tool-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .tool-button.active {
+  background: #4834d4;
+  color: #ffffff;
+}
+
+.dark .canvas-container {
+  background: #262626;
+}
+
+.dark canvas {
+  background: #1e293b;
+}
+
+.dark .command-interface {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: #334155;
+}
+
+.dark .sticky-note {
+  background: #2d3446;
+  color: #e0e0e0;
 }

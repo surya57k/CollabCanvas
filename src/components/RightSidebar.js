@@ -6,9 +6,12 @@ import '../styles/RightSidebar.css';
 
 const templates = {
   blank: { name: 'Blank Canvas', icon: '📄', id: 'blank' },
-  template1: { name: 'WebChart', icon: '📊', id: 'template1' },
-  template2: { name: 'SWOT Analysis', icon: '📋', id: 'template2' },
-  template3: { name: 'Brainstorm', icon: '🧠', id: 'template3' }
+  kanban: { name: 'Kanban Board', icon: '📋', id: 'kanban' },
+  mindmap: { name: 'Mind Map', icon: '🧠', id: 'mindmap' },
+  businessModel: { name: 'Business Model Canvas', icon: '💼', id: 'businessModel' },
+  weeklyPlanner: { name: 'Weekly Planner', icon: '📅', id: 'weeklyPlanner' },
+  retrospective: { name: 'Team Retrospective', icon: '🔄', id: 'retrospective' },
+  userJourney: { name: 'User Journey Map', icon: '🚶', id: 'userJourney' }
 };
 
 const RightSidebar = ({ collaborators, loadTemplate, onCommandExecute, darkMode, canvasRef }) => {

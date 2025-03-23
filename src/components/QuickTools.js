@@ -27,7 +27,11 @@ const QuickTools = ({
     { id: 'triangle', icon: '△', label: 'Triangle' },
     { id: 'line', icon: '➖', label: 'Line' },
     { id: 'arrow', icon: '➡️', label: 'Arrow' },
-    { id: 'star', icon: '⭐', label: 'Star' }  // Add star shape
+    { id: 'star', icon: '⭐', label: 'Star' },
+    { id: 'hexagon', icon: '⬢', label: 'Hexagon' },
+    { id: 'pentagon', icon: '⬟', label: 'Pentagon' },
+    { id: 'diamond', icon: '💎', label: 'Diamond' },
+    { id: 'oval', icon: '🔵', label: 'Oval' }
   ];
 
   const handleShapeSelect = (shapeId) => {
